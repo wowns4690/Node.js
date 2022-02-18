@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="hidden" id="boardNum" value="<%=data[0].boardNum%>">
+        <table border="1" style="width:550px;">
+            <tr>
+                <td>제목</td>
+                <td colspan="4"><input type="text" id="title" value="<%=data[0].Title%>"></td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td colspan="4"><input type="text" id="writer" value="<%=data[0].Writer%>"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td colspan="4"><textarea id="content" style="width: 350px; height: 500px;"><%=data[0].Content%></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="4"><button onclick="Update()">완료</button></td>
+            </tr>
+        </table>
+    </body>
+    <script src="/javascripts/board.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

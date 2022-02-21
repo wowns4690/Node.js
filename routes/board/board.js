@@ -4,11 +4,15 @@ const router = express.Router();
 
 // 데이터베이스 접속을 위해 maria.js를 불러온다
 const maria = require('../../maria');
+var moment = require('moment');
 
 // /join 으로 get 접속하면 views/sign/join.pug 를 렌더링해준다.
 // join.pug 는 추후 접속한다.
 router.get('/', function(req, res, next) {
     maria.query('SELECT * FROM board',function(err, results, fields){
+        for(var i=0; i<results.length; i++){
+            results[i].WriterDate = moment(results[i].WriterDate).format('YYYY-MM-DD');
+        }
         res.render('board/boardList',{data : results});
         console.log(results);;
     })
@@ -36,6 +40,7 @@ router.post('/new', function(req, res){
 router.get('/show/:id',function(req,res){
     const num = req.params.id;
     maria.query('SELECT * FROM board WHERE boardNum = ?',num,function(err,results){
+        results[0].WriterDate = moment(results[0].WriterDate).format('YYYY-MM-DD');
         console.log(results);
         res.render('board/boardShow',{data:results});
     });

@@ -9,7 +9,7 @@ var moment = require('moment');
 // /join 으로 get 접속하면 views/sign/join.pug 를 렌더링해준다.
 // join.pug 는 추후 접속한다.
 router.get('/', function(req, res, next) {
-    maria.query('SELECT * FROM board',function(err, results, fields){
+    maria.query('SELECT * FROM board ORDER BY boardNum desc',function(err, results, fields){
         for(var i=0; i<results.length; i++){
             results[i].WriterDate = moment(results[i].WriterDate).format('YYYY-MM-DD');
         }

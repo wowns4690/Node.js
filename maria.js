@@ -4,6 +4,6 @@ const conn = maria.createConnection({
     port:3306,
     user:'root',
     password:'root',
-    database:'node'
+    database:'NodeWeb'
 });
 module.exports = conn;

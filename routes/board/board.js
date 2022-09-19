@@ -34,7 +34,6 @@ router.post('/new', function(req, res){
         const Writer = req.body.writer;
         const Content = req.body.content;
         maria.query('INSERT INTO board (boardNum,Title,Writer,Content,WriterDate) VALUES(?,?,?,?,now())',[num,Title,Writer,Content]);
-        res.render('board/boardNew');
     });
 });
 
